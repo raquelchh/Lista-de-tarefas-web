@@ -19,9 +19,4 @@ function adicionarTarefa() {
    listaTarefas.appendChild(novaTarefa)
    //retorna el input con texto o vazio en ""
    inputTarefa.value = ""
-
-   
 }
-
- 
-
