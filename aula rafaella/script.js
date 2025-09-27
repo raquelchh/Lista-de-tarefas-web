@@ -1,4 +1,4 @@
-function adicionarTarefa() {
+ function adicionarTarefa() {
    //entrada de input id mencionada en la variable input
    let inputTarefa = document.getElementById("inputTarefa") 
    //paragrafo com variavel mensagem
