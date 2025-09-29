@@ -2,13 +2,13 @@ let tarefas = []; // array global para armazenar tarefas
 
 function adicionarTarefa() {
    const inputTarefa = document.getElementById("inputTarefa");
-   let mensagem = ["Tarefa adicionada com sucesso!", "Por favor, digite uma tarefa.!"]
+   let mensagem = "Tarefa adicionada com sucesso!";
    let tarefaTexto = inputTarefa.value.trim();
 
    if (tarefaTexto !== "") {
       tarefas.push(tarefaTexto); // add tarefas ao array
       console.log(tarefaTexto);
-      document.getElementById("mensagem").textContent = mensagem[0];
+      document.getElementById("mensagem").textContent = mensagem
       document.getElementById("mensagem").style.color = "green";
       inputTarefa.focus();
       //limpa el mensaje despues de 3 segundos
@@ -17,7 +17,7 @@ function adicionarTarefa() {
       },3000);
       renderizarTarefas(); // renderiza a lista atualizada
    } else {
-      document.getElementById("mensagem").textContent = mensagem[1];
+      document.getElementById("mensagem").textContent = "Por favor, insira uma tarefa válida.";
       document.getElementById("mensagem").style.color = "red";
    }
    inputTarefa.value = "";
