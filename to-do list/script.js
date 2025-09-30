@@ -26,27 +26,42 @@ function adicionarTarefa() {
 
 function renderizarTarefas() {
    const listaTarefas = document.getElementById("listaTarefas");
-   //listaTarefas.innerHTML = ""; // limpa a lista antes de renderizar
+   listaTarefas.innerHTML = ""; // limpa a lista antes de renderizar
 
    for (let i = 0; i < tarefas.length; i++) {
       let novaTarefa = document.createElement("li");
       novaTarefa.textContent = tarefas[i];
        
-
+   
       let buttonRemove = document.createElement("button");
       buttonRemove.className = "remover";
       buttonRemove.textContent = "Remover";
       buttonRemove.onclick = () => removerTarefa(i);
+ 
+
+      let editTarefa = document.createElement("button");
+      editTarefa.className = "editar";
+      editTarefa.textContent = "Editar";
+      editTarefa.onclick = () => editarTarefa(i);
 
       novaTarefa.appendChild(buttonRemove);
+      novaTarefa.appendChild(editTarefa);
       listaTarefas.appendChild(novaTarefa);
 
-   
    }
+
 }
 
 function removerTarefa(i){
     tarefas.splice(i, 1);
     renderizarTarefas();
     document.getElementById("listaTarefas").innerHTML = "";
+}
+
+function editarTarefa(i){
+   const tarefaEditada = prompt("Edite a tarefa: ");
+   if (tarefaEditada !== null && tarefaEditada.trim() !== ""){
+      tarefas[i] = tarefaEditada.trim();
+      renderizarTarefas();
+   }
 }
