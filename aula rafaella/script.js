@@ -16,6 +16,7 @@ function adicionarTarefa() {
          document.getElementById("mensagem").textContent = "";
       },3000);
       renderizarTarefas(); // renderiza a lista atualizada
+
    } else {
       document.getElementById("mensagem").textContent = "Por favor, insira uma tarefa válida.";
       document.getElementById("mensagem").style.color = "red";
@@ -25,11 +26,27 @@ function adicionarTarefa() {
 
 function renderizarTarefas() {
    const listaTarefas = document.getElementById("listaTarefas");
-   listaTarefas.innerHTML = ""; // limpa a lista antes de renderizar
+   //listaTarefas.innerHTML = ""; // limpa a lista antes de renderizar
 
    for (let i = 0; i < tarefas.length; i++) {
       let novaTarefa = document.createElement("li");
       novaTarefa.textContent = tarefas[i];
+       
+
+      let buttonRemove = document.createElement("button");
+      buttonRemove.className = "remover";
+      buttonRemove.textContent = "Remover";
+      buttonRemove.onclick = () => removerTarefa(i);
+
+      novaTarefa.appendChild(buttonRemove);
       listaTarefas.appendChild(novaTarefa);
+
+   
    }
+}
+
+function removerTarefa(i){
+    tarefas.splice(i, 1);
+    renderizarTarefas();
+    document.getElementById("listaTarefas").innerHTML = "";
 }
