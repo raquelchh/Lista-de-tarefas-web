@@ -13,8 +13,8 @@ function adicionarTarefa() {
       inputTarefa.focus();
       //limpa el mensaje despues de 3 segundos
       setTimeout(() => {
-         document.getElementById("mensagem").textContent = "";
-      },3000);
+        document.getElementById("mensagem").textContent = "";
+      }, 3000);
       renderizarTarefas(); // renderiza a lista atualizada
 
    } else {
@@ -55,7 +55,7 @@ function renderizarTarefas() {
 function removerTarefa(i){
     tarefas.splice(i, 1);
     renderizarTarefas();
-    document.getElementById("listaTarefas").innerHTML = "";
+     
 }
 
 function editarTarefa(i){
@@ -65,3 +65,19 @@ function editarTarefa(i){
       renderizarTarefas();
    }
 }
+
+function limparLista(){
+   tarefas.length = 0;
+   renderizarTarefas();
+   let mensagemElement = document.getElementById("mensagem");
+   let mensagem = "Lista de tarefas limpa com sucesso";
+   mensagemElement.textContent = mensagem;
+   mensagemElement.style.color = "green";
+   if(tarefas.length == 0 ){
+      setTimeout(() => {
+         mensagemElement.textContent = "";
+      }, 3000);
+   }
+
+}
+ 
