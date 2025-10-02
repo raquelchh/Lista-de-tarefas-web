@@ -12,6 +12,18 @@
 concluir(){
    this.concluida = true; // //marca la tarea como concluida
 }
+}
+
+class ListaDeTarefas{
+   constructor(){ //constructor de la clase Lista de tarefas
+      this.Tarefa = []; 
+   }
+
+   
+
+
+
+
 
 
 }
