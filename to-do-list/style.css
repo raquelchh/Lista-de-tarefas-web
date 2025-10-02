@@ -70,4 +70,7 @@ input[type="text"]:focus {
     border-color: #a35050;
     box-shadow: inset 0 2px 4px rgba(216, 69, 103, 0.3);
 }
+#limpar-button{
+    display: none;
+}
  

@@ -19,6 +19,7 @@ function adicionarTarefa() {
 function renderizarTarefas() {
    const listaTarefas = document.getElementById("listaTarefas");
    listaTarefas.innerHTML = ""; 
+   
 
    for (let i = 0; i < tarefas.length; i++) {
       let novaTarefa = document.createElement("li");
@@ -38,6 +39,9 @@ function renderizarTarefas() {
       novaTarefa.appendChild(editTarefa);
       listaTarefas.appendChild(novaTarefa);
    }
+   const limparButton = document.getElementById("limpar-button");
+   limparButton.style.display = tarefas.length > 0 ? "inline-block" : "none";
+
 }
 
 function removerTarefa(i){
@@ -52,8 +56,7 @@ function editarTarefa(i){
       tarefas[i] = tarefaEditada.trim();
       renderizarTarefas();
       mostrarMensagem("Tarefa editada com sucesso!", "green");
-   } else {
-      mostrarMensagem("Edição inválida, tente novamente.", "red");
+   
    }
 }
 
@@ -61,6 +64,8 @@ function limparLista(){
    tarefas.length = 0;
    renderizarTarefas();
    mostrarMensagem("Lista limpa com sucesso!", "green");
+   
+   
 }
 
  
