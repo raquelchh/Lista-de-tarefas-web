@@ -22,10 +22,8 @@ class ListaDeTarefas {
     if (texto.trim() !== "") {
       this.tarefas.push(new Tarefa(texto)); 
       this.mostrarMensagem("Tarefa adicionada com sucesso!", "green");
-      this.renderizar();
-    } else {
-      this.mostrarMensagem("Por favor, insira uma tarefa válida.", "red");
-    }
+      this.renderizar();}
+    else{ this.mostrarMensagem("Por favor, insira uma tarefa.", "red")}
     document.getElementById("inputTarefa").value = "";
     document.getElementById("inputTarefa").focus();
   }
@@ -41,8 +39,7 @@ class ListaDeTarefas {
     if (novoTexto !== null && novoTexto.trim() !== "") {
       this.tarefas[index].editar(novoTexto);
       this.mostrarMensagem("Tarefa editada com sucesso!", "green");
-      this.renderizar();
-    }
+      this.renderizar();}
   }
 
   limpar() {
