@@ -12,6 +12,10 @@ class Tarefa {
   concluir() {
     this.concluida = true;
   }
+
+  desfazerConclusao(){
+    this.concluida = false;
+  }
   
 }
 
@@ -77,22 +81,37 @@ class ListaDeTarefas {
       btneditar.className = "editar";
       btneditar.onclick = () => this.editar(i);
 
-    const concluir = document.createElement("button");
-    concluir.textContent = "✅";
-    concluir.className = "concluir";
-    concluir.onclick = () => {
-      this.tarefas[i].concluir();
-      this.renderizar();
-    }
-      if(tarefa.concluida){
-        li.style.textDecoration = "line-through";
-        concluir.disabled = true;
-      }
+      const concluir = document.createElement("button");
+      concluir.textContent = "✅";
+      concluir.className = "concluir";
+      concluir.onclick = () => {
+        this.tarefas[i].concluir();
+        this.renderizar();
+
+       
+};
+
+      const desfazer = document.createElement("button");
+      desfazer.textContent = "🔄";
+      desfazer.className = "desfazer";
+      desfazer.onclick = () => {
+        this.tarefas[i].desfazerConclusao();
+        this.renderizar()
+}
+      if (tarefa.concluida) {
+         li.style.textDecoration = "line-through";
+         concluir.disabled = true;
+          li.appendChild(desfazer);
+    
+     
+}
     
       li.appendChild(btnremove);
       li.appendChild(btneditar);
       li.appendChild(concluir);
       lista.appendChild(li);
+      
+       
     });
 
     const btnLimpar = document.getElementById("limpar-button");
