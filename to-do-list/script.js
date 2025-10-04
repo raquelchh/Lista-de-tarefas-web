@@ -2,6 +2,7 @@ class Tarefa {
   constructor(texto) {
     this.texto = texto;
     this.concluida = false;
+     
   }
 
   editar(novoTexto) {
@@ -11,6 +12,7 @@ class Tarefa {
   concluir() {
     this.concluida = true;
   }
+  
 }
 
 class ListaDeTarefas {
@@ -59,7 +61,7 @@ class ListaDeTarefas {
 
   renderizar() {
     const lista = document.getElementById("listaTarefas"); // 
-    lista.innerHTML = "";
+    lista.innerHTML = ""; 
 
     this.tarefas.forEach((tarefa, i) => {
       const li = document.createElement("li");
@@ -75,19 +77,18 @@ class ListaDeTarefas {
       btneditar.className = "editar";
       btneditar.onclick = () => this.editar(i);
 
-      const concluir = document.createElement("button");
-      concluir.textContent = "Concluir";
-      concluir.className = "concluir";
-      concluir.onclick = () => {
-        this.tarefas[i].concluir();
-        this.renderizar();
-      };
-
-      if (tarefa.concluida) {
+    const concluir = document.createElement("button");
+    concluir.textContent = "✅";
+    concluir.className = "concluir";
+    concluir.onclick = () => {
+      this.tarefas[i].concluir();
+      this.renderizar();
+    }
+      if(tarefa.concluida){
         li.style.textDecoration = "line-through";
         concluir.disabled = true;
       }
-
+    
       li.appendChild(btnremove);
       li.appendChild(btneditar);
       li.appendChild(concluir);
@@ -96,6 +97,7 @@ class ListaDeTarefas {
 
     const btnLimpar = document.getElementById("limpar-button");
     btnLimpar.style.display = this.tarefas.length > 0 ? "inline-block" : "none";
+ 
   }
 }
 
