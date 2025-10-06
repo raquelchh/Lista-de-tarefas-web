@@ -2,7 +2,7 @@ class Tarefa {
   constructor(texto) {
     this.texto = texto;
     this.concluida = false;
-     
+    this.comentario = "";
   }
 
   editar(novoTexto) {
@@ -16,8 +16,14 @@ class Tarefa {
   desfazerConclusao(){
     this.concluida = false;
   }
+
+  adicionarComentario(texto){
+    this.comentario = texto.trim();
+  }
   
 }
+ 
+
 
 class ListaDeTarefas {
   constructor() {
@@ -60,7 +66,12 @@ class ListaDeTarefas {
     el.style.color = cor;
     setTimeout(() => {
       el.textContent = "";
-    }, 3000);
+    }, 3000); 
+  }
+
+  adicionarComentario(mensagem, cor){
+    this.mnostrarMensagem("Clique aqui para adicionar na agenda", "grey")
+    this.renderizar()
   }
 
   renderizar() {
@@ -86,30 +97,41 @@ class ListaDeTarefas {
       concluir.className = "concluir";
       concluir.onclick = () => {
         this.tarefas[i].concluir();
-        this.renderizar();
-
-       
-};
+        this.renderizar();}
 
       const desfazer = document.createElement("button");
       desfazer.textContent = "🔄";
       desfazer.className = "desfazer";
       desfazer.onclick = () => {
         this.tarefas[i].desfazerConclusao();
-        this.renderizar()
-}
+        this.renderizar()}
       if (tarefa.concluida) {
          li.style.textDecoration = "line-through";
          concluir.disabled = true;
-          li.appendChild(desfazer);
-    
-     
-}
+         li.appendChild(desfazer);}
+
+
+      const linkAgenda = document.createElement("span");
+      linkAgenda.textContent = "Clique aqui para adicionar esta tarefa na agenda";
+      linkAgenda.className = "link-agenda"; 
+      linkAgenda.style.color = "grey";
+      linkAgenda.style.cursor = "pointer";
+      linkAgenda.onclick = () => {
+        const titulo = encodeURIComponent(tarefa.texto);
+        const descricao = encodeURIComponent(tarefa.comentario || "");
+        const url = 'https://calendar.google.com./calendar/render?action-TEMPLATE&text=${titulo}&details=%{descricao}';
+        window.open(url,"_blank");
+      };
+      li.appendChild(linkAgenda)
+
+
+
     
       li.appendChild(btnremove);
       li.appendChild(btneditar);
       li.appendChild(concluir);
       lista.appendChild(li);
+    
       
        
     });

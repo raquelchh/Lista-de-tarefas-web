@@ -1,0 +1,20 @@
+{
+  "name": "js-studying",
+  "version": "1.0.0",
+  "description": "Lista de tarefa simples",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raquelchh/Lista-de-tarefas-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raquelchh/Lista-de-tarefas-web/issues"
+  },
+  "homepage": "https://github.com/raquelchh/Lista-de-tarefas-web#readme"
+}
