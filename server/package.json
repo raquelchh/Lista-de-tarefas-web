@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "express": "^5.1.0"
-  }
+  },
+  "name": "lista-de-tarefas-backend",
+  "version": "1.0.0",
+  "description": "Servidor para lista de tarefas",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raquelchh/Lista-de-tarefas-web.git"
+  },
+  "author": "Raquel Chancé",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raquelchh/Lista-de-tarefas-web/issues"
+  },
+  "homepage": "https://github.com/raquelchh/Lista-de-tarefas-web#readme"
 }
