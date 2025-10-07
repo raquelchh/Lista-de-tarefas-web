@@ -17,7 +17,6 @@ class Tarefa {
   }
   
 }
- 
 
 class ListaDeTarefas {
   constructor() {
@@ -63,11 +62,6 @@ class ListaDeTarefas {
     }, 3000); 
   }
 
-  adicionarComentario(mensagem, cor){
-    this.mnostrarMensagem("Clique aqui para adicionar na agenda", "grey")
-    this.renderizar()
-  }
-
   renderizar() {
     const lista = document.getElementById("listaTarefas"); // 
     lista.innerHTML = ""; 
@@ -99,21 +93,44 @@ class ListaDeTarefas {
       desfazer.onclick = () => {
         this.tarefas[i].desfazerConclusao();
         this.renderizar()}
-      if (tarefa.concluida) {
+        if (tarefa.concluida) {
          li.style.textDecoration = "line-through";
          concluir.disabled = true;
          li.appendChild(desfazer);}
 
-         li.appendChild(btnremove);
-         li.appendChild(btneditar);
-         li.appendChild(concluir);
-         lista.appendChild(li);  
+
+
+      const now = new Date(); //momento atual
+      const inanHour = new Date(now.getTime() + 60 * 60 *1000); // suma una hora
+      
+    function formatarDataGoogle(date) {
+      const year = date.getUTCFullYear();
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(date.getUTCDate()).padStart(2, '0');
+      const hour = String(date.getUTCHours()).padStart(2, '0');
+      const minute = String(date.getUTCMinutes()).padStart(2, '0');
+      const second = String(date.getUTCSeconds()).padStart(2, '0'); // Corrigido aqui
+      return `${year}${month}${day}T${hour}${minute}${second}Z`;
+    }
+      const start = formatarDataGoogle(now);
+      const end = formatarDataGoogle(inanHour);
+      const tarefaTexto = encodeURIComponent(tarefa.texto.trim());
+
+      const linkAgenda = document.createElement("a");
+      linkAgenda.textContent = "Adicionar na agenda";
+      linkAgenda.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${tarefaTexto}&dates=${start}/${end}`;
+      linkAgenda.target = "_blank";
+      linkAgenda.className = "agenda-link";
+      li.appendChild(linkAgenda);
+      li.appendChild(btnremove);
+      li.appendChild(btneditar);
+      li.appendChild(concluir);
+      lista.appendChild(li);  
        
     });
 
     const btnLimpar = document.getElementById("limpar-button");
     btnLimpar.style.display = this.tarefas.length > 0 ? "inline-block" : "none";
- 
   }
 }
 
