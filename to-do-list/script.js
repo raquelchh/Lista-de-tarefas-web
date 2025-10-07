@@ -2,7 +2,6 @@ class Tarefa {
   constructor(texto) {
     this.texto = texto;
     this.concluida = false;
-    this.comentario = "";
   }
 
   editar(novoTexto) {
