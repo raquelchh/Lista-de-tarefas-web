@@ -16,14 +16,9 @@ class Tarefa {
   desfazerConclusao(){
     this.concluida = false;
   }
-
-  adicionarComentario(texto){
-    this.comentario = texto.trim();
-  }
   
 }
  
-
 
 class ListaDeTarefas {
   constructor() {
@@ -110,29 +105,10 @@ class ListaDeTarefas {
          concluir.disabled = true;
          li.appendChild(desfazer);}
 
-
-      const linkAgenda = document.createElement("span");
-      linkAgenda.textContent = "Clique aqui para adicionar esta tarefa na agenda";
-      linkAgenda.className = "link-agenda"; 
-      linkAgenda.style.color = "grey";
-      linkAgenda.style.cursor = "pointer";
-      linkAgenda.onclick = () => {
-        const titulo = encodeURIComponent(tarefa.texto);
-        const descricao = encodeURIComponent(tarefa.comentario || "");
-        const url = 'https://calendar.google.com./calendar/render?action-TEMPLATE&text=${titulo}&details=%{descricao}';
-        window.open(url,"_blank");
-      };
-      li.appendChild(linkAgenda)
-
-
-
-    
-      li.appendChild(btnremove);
-      li.appendChild(btneditar);
-      li.appendChild(concluir);
-      lista.appendChild(li);
-    
-      
+         li.appendChild(btnremove);
+         li.appendChild(btneditar);
+         li.appendChild(concluir);
+         lista.appendChild(li);  
        
     });
 
