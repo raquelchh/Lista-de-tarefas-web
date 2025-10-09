@@ -3,7 +3,9 @@
      display: flex;  
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: auto;
     margin: 0;
     background-color:  #b5bfed;
 }
@@ -71,6 +73,10 @@ input[type="text"] {
 input[type="text"]:focus {
     border-color: #a35050;
     box-shadow: inset 0 2px 4px rgba(216, 69, 103, 0.3);
+}
+#listaTarefas {
+  max-height: 400px;
+  overflow-y: auto;
 }
 #limpar-button{
     display: none;
