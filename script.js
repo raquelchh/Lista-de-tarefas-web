@@ -91,14 +91,12 @@ class ListaDeTarefas {
       desfazer.textContent = "🔄";
       desfazer.className = "desfazer";
       desfazer.onclick = () => {
-        this.tarefas[i].desfazerConclusao();
-        this.renderizar()}
-        if (tarefa.concluida) {
-         li.style.textDecoration = "line-through";
-         concluir.disabled = true;
-         li.appendChild(desfazer);}
-
-
+      this.tarefas[i].desfazerConclusao();
+      this.renderizar()}
+      if (tarefa.concluida) {
+        li.style.textDecoration = "line-through";
+        concluir.disabled = true;
+        li.appendChild(desfazer);}
 
       const now = new Date(); //momento atual
       const inanHour = new Date(now.getTime() + 60 * 60 *1000); // suma una hora

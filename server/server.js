@@ -1,11 +1,67 @@
-const express = require('express'); //usa framework Express 
-const app = express();              //cria servidor
-app.use(express.json());            //permite receber dados JSON
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import VendaMensal from "./VendaMensal.js";
 
-app.get ('/', (req, res) => {
-    res.send('Servidor funcionando'); //rota de test
+dotenv.config();
+
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+const connectDB = async () => {
+  try {
+    mongoose.connect(process.env.MONGO_URI);
+    console.log("Conectado ao MongoDB");
+  } catch (error) {
+    console.log("Erro ao conectar com o MongoDB", error);
+  }
+};
+
+connectDB();
+
+// CREATE
+app.post("/vendas", async (req, res) => {
+  try {
+    const novoUsuario = await VendaMensal.create(req.body);
+    res.json(novoUsuario);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
 });
 
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
+// READ
+app.get("/vendas", async (req, res) => {
+  try {
+    const vendasMensais = await VendaMensal.find();
+    res.json(vendasMensais);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
+// UPDATE
+app.put("/vendas/:id", async (req, res) => {
+  try {
+    const vendaMensalAtualizada = await VendaMensal.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
+    res.json(vendaMensalAtualizada);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
+// DELETE
+app.delete("/vendas/:id", async (req, res) => {
+  try {
+    const vendaMensalDeletada = await VendaMensal.findByIdAndDelete(
+      req.params.id
+    );
+    res.json(vendaMensalDeletada);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
 });
