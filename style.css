@@ -22,7 +22,7 @@
 }
 h1 {
     
-    color: #331F19;
+    color: #825446;
 }
 p {
     color: #331F19;
@@ -107,7 +107,7 @@ input[type="text"]:focus {
 }
 .agenda-link:hover{
     background-color: #163b61;
-    border-radius: 5px;
+    border-radius: 50px;
     border-color: #6e5c50;
 
 }
