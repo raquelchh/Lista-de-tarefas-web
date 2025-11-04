@@ -7,7 +7,7 @@
     min-height: 100vh;
     overflow: auto;
     margin: 0;
-    background-color:  #b5bfed;
+    background-color:  #080808;
 }
 .container {
     text-align: center;
@@ -79,6 +79,7 @@ input[type="text"]:focus {
 }
 #limpar-button{
     display: none;
+   
 }
 .remover, .editar, .concluir, .desfazer{
   padding: 8px 12px;
