@@ -61,6 +61,11 @@ class ListaDeTarefas {
       el.textContent = "";
     }, 3000); 
   }
+  mudarTema(){
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+
+  }
 
   renderizar() {
     const lista = document.getElementById("listaTarefas"); // 
@@ -124,7 +129,6 @@ class ListaDeTarefas {
       li.appendChild(btneditar);
       li.appendChild(concluir);
       lista.appendChild(li);  
-       
     });
 
     const btnLimpar = document.getElementById("limpar-button");
